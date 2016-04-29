@@ -4,7 +4,7 @@
 #
 Name     : talloc
 Version  : 2.1.6
-Release  : 5
+Release  : 6
 URL      : https://www.samba.org/ftp/talloc/talloc-2.1.6.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.1.6.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
