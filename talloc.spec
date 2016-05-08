@@ -4,13 +4,17 @@
 #
 Name     : talloc
 Version  : 2.1.7
-Release  : 8
+Release  : 9
 URL      : https://www.samba.org/ftp/talloc/talloc-2.1.7.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.1.7.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
 Group    : Development/Tools
 License  : LGPL-3.0+
 Requires: talloc-lib
+BuildRequires : acl-dev
+BuildRequires : attr-dev
+BuildRequires : libaio-dev
+BuildRequires : zlib-dev
 Patch1: 0001_fix_default_install_path.patch
 Patch2: 0002_fix_waf_options.patch
 
