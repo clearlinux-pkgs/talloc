@@ -4,16 +4,18 @@
 #
 Name     : talloc
 Version  : 2.1.7
-Release  : 9
+Release  : 10
 URL      : https://www.samba.org/ftp/talloc/talloc-2.1.7.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.1.7.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
 Group    : Development/Tools
 License  : LGPL-3.0+
 Requires: talloc-lib
+Requires: talloc-python
 BuildRequires : acl-dev
 BuildRequires : attr-dev
 BuildRequires : libaio-dev
+BuildRequires : python-dev
 BuildRequires : zlib-dev
 Patch1: 0001_fix_default_install_path.patch
 Patch2: 0002_fix_waf_options.patch
@@ -38,6 +40,14 @@ Group: Libraries
 
 %description lib
 lib components for the talloc package.
+
+
+%package python
+Summary: python components for the talloc package.
+Group: Default
+
+%description python
+python components for the talloc package.
 
 
 %prep
@@ -65,3 +75,7 @@ rm -rf %{buildroot}
 %files lib
 %defattr(-,root,root,-)
 /usr/lib/*.so.*
+
+%files python
+%defattr(-,root,root,-)
+/usr/lib/python*/*
