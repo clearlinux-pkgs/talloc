@@ -4,13 +4,14 @@
 #
 Name     : talloc
 Version  : 2.1.7
-Release  : 12
+Release  : 13
 URL      : https://www.samba.org/ftp/talloc/talloc-2.1.7.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.1.7.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
 Group    : Development/Tools
 License  : LGPL-3.0+
 Requires: talloc-lib
+Requires: talloc-legacypython
 Requires: talloc-python
 BuildRequires : acl-dev
 BuildRequires : attr-dev
@@ -34,6 +35,15 @@ Provides: talloc-devel
 dev components for the talloc package.
 
 
+%package legacypython
+Summary: legacypython components for the talloc package.
+Group: Default
+Requires: python-core
+
+%description legacypython
+legacypython components for the talloc package.
+
+
 %package lib
 Summary: lib components for the talloc package.
 Group: Libraries
@@ -45,6 +55,7 @@ lib components for the talloc package.
 %package python
 Summary: python components for the talloc package.
 Group: Default
+Requires: talloc-legacypython
 
 %description python
 python components for the talloc package.
@@ -56,10 +67,16 @@ python components for the talloc package.
 %patch2 -p1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C
+export SOURCE_DATE_EPOCH=1510940655
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %install
+export SOURCE_DATE_EPOCH=1510940655
 rm -rf %{buildroot}
 %make_install
 
@@ -69,13 +86,21 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/include/*.h
-/usr/lib/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib/libpytalloc-util.so
+/usr/lib/libtalloc.so
+/usr/lib64/pkgconfig/pytalloc-util.pc
+/usr/lib64/pkgconfig/talloc.pc
+
+%files legacypython
+%defattr(-,root,root,-)
+%exclude /usr/lib/python2.7/site-packages/talloc.so
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/*.so.*
+/usr/lib/libpytalloc-util.so.2
+/usr/lib/libpytalloc-util.so.2.1.7
+/usr/lib/libtalloc.so.2
+/usr/lib/libtalloc.so.2.1.7
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
