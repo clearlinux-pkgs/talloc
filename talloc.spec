@@ -4,14 +4,14 @@
 #
 Name     : talloc
 Version  : 2.1.7
-Release  : 14
+Release  : 15
 URL      : https://www.samba.org/ftp/talloc/talloc-2.1.7.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.1.7.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
 Group    : Development/Tools
 License  : LGPL-3.0+
-Requires: talloc-lib
 Requires: talloc-legacypython
+Requires: talloc-lib
 Requires: talloc-python
 BuildRequires : acl-dev
 BuildRequires : attr-dev
@@ -71,14 +71,23 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1510940655
+export SOURCE_DATE_EPOCH=1511830728
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1510940655
+export SOURCE_DATE_EPOCH=1511830728
 rm -rf %{buildroot}
 %make_install
+## make_install_append content
+mkdir mkdir -p %{buildroot}/usr/lib64/
+mv %{buildroot}/usr/lib/libpytalloc-util.so %{buildroot}/usr/lib64/libpytalloc-util.so
+mv %{buildroot}/usr/lib/libtalloc.so %{buildroot}/usr/lib64/libtalloc.so
+mv %{buildroot}/usr/lib/libpytalloc-util.so.2 %{buildroot}/usr/lib64/libpytalloc-util.so.2
+mv %{buildroot}/usr/lib/libpytalloc-util.so.2.1.7 %{buildroot}/usr/lib64/libpytalloc-util.so.2.1.7
+mv %{buildroot}/usr/lib/libtalloc.so.2 %{buildroot}/usr/lib64/libtalloc.so.2
+mv %{buildroot}/usr/lib/libtalloc.so.2.1.7 %{buildroot}/usr/lib64/libtalloc.so.2.1.7
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -86,8 +95,8 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/include/*.h
-/usr/lib/libpytalloc-util.so
-/usr/lib/libtalloc.so
+/usr/lib64/libpytalloc-util.so
+/usr/lib64/libtalloc.so
 /usr/lib64/pkgconfig/pytalloc-util.pc
 /usr/lib64/pkgconfig/talloc.pc
 
@@ -97,10 +106,10 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/libpytalloc-util.so.2
-/usr/lib/libpytalloc-util.so.2.1.7
-/usr/lib/libtalloc.so.2
-/usr/lib/libtalloc.so.2.1.7
+/usr/lib64/libpytalloc-util.so.2
+/usr/lib64/libpytalloc-util.so.2.1.7
+/usr/lib64/libtalloc.so.2
+/usr/lib64/libtalloc.so.2.1.7
 
 %files python
 %defattr(-,root,root,-)
