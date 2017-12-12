@@ -1,7 +1,2 @@
 mkdir mkdir -p %{buildroot}/usr/lib64/
-mv %{buildroot}/usr/lib/libpytalloc-util.so %{buildroot}/usr/lib64/libpytalloc-util.so
-mv %{buildroot}/usr/lib/libtalloc.so %{buildroot}/usr/lib64/libtalloc.so
-mv %{buildroot}/usr/lib/libpytalloc-util.so.2 %{buildroot}/usr/lib64/libpytalloc-util.so.2
-mv %{buildroot}/usr/lib/libpytalloc-util.so.2.1.7 %{buildroot}/usr/lib64/libpytalloc-util.so.2.1.7
-mv %{buildroot}/usr/lib/libtalloc.so.2 %{buildroot}/usr/lib64/libtalloc.so.2
-mv %{buildroot}/usr/lib/libtalloc.so.2.1.7 %{buildroot}/usr/lib64/libtalloc.so.2.1.7
+mv %{buildroot}/usr/lib/*.so.* %{buildroot}/usr/lib64/
