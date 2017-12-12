@@ -4,7 +4,7 @@
 #
 Name     : talloc
 Version  : 2.1.10
-Release  : 17
+Release  : 18
 URL      : https://www.samba.org/ftp/talloc/talloc-2.1.10.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.1.10.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
@@ -71,17 +71,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1513085388
+export SOURCE_DATE_EPOCH=1513085561
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1513085388
+export SOURCE_DATE_EPOCH=1513085561
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
 mkdir mkdir -p %{buildroot}/usr/lib64/
-mv %{buildroot}/usr/lib/*.so.* %{buildroot}/usr/lib64/
+mv %{buildroot}/usr/lib/*.so* %{buildroot}/usr/lib64/
 ## make_install_append end
 
 %files
@@ -90,8 +90,8 @@ mv %{buildroot}/usr/lib/*.so.* %{buildroot}/usr/lib64/
 %files dev
 %defattr(-,root,root,-)
 /usr/include/*.h
-/usr/lib/libpytalloc-util.so
-/usr/lib/libtalloc.so
+/usr/lib64/libpytalloc-util.so
+/usr/lib64/libtalloc.so
 /usr/lib64/pkgconfig/pytalloc-util.pc
 /usr/lib64/pkgconfig/talloc.pc
 
