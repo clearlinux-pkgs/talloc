@@ -16,7 +16,7 @@ Requires: talloc-python
 BuildRequires : acl-dev
 BuildRequires : attr-dev
 BuildRequires : libaio-dev
-BuildRequires : python-dev
+
 BuildRequires : zlib-dev
 Patch1: 0001_fix_default_install_path.patch
 Patch2: 0002_fix_waf_options.patch
