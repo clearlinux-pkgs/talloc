@@ -4,4 +4,4 @@ acl-dev
 attr-dev
 libaio-dev
 zlib-dev
-python-dev
+python3-dev
