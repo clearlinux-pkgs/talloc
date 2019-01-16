@@ -1,8 +1,0 @@
---- talloc-2.1.14/buildtools/bin/waf~	2015-04-29 09:20:16.000000000 +0000
-+++ talloc-2.1.14/buildtools/bin/waf	2018-09-03 02:23:25.190635400 +0000
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- # encoding: ISO-8859-1
- # Thomas Nagy, 2005-2010
- 
