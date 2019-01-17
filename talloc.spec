@@ -4,7 +4,7 @@
 #
 Name     : talloc
 Version  : 2.1.15
-Release  : 25
+Release  : 26
 URL      : https://www.samba.org/ftp/talloc/talloc-2.1.15.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.1.15.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
@@ -33,6 +33,14 @@ Provides: talloc-devel = %{version}-%{release}
 
 %description dev
 dev components for the talloc package.
+
+
+%package extras
+Summary: extras components for the talloc package.
+Group: Default
+
+%description extras
+extras components for the talloc package.
 
 
 %package lib
@@ -71,7 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547674076
+export SOURCE_DATE_EPOCH=1547743348
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -80,7 +88,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1547674076
+export SOURCE_DATE_EPOCH=1547743348
 rm -rf %{buildroot}
 %make_install
 
@@ -95,10 +103,15 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/pytalloc-util.cpython-37m-x86_64-linux-gnu.pc
 /usr/lib64/pkgconfig/talloc.pc
 
-%files lib
+%files extras
 %defattr(-,root,root,-)
 /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2
 /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2.1.15
+
+%files lib
+%defattr(-,root,root,-)
+%exclude /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2
+%exclude /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2.1.15
 /usr/lib64/libtalloc.so.2
 /usr/lib64/libtalloc.so.2.1.15
 
