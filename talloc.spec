@@ -4,10 +4,10 @@
 #
 Name     : talloc
 Version  : 2.2.0
-Release  : 27
+Release  : 28
 URL      : https://www.samba.org/ftp/talloc/talloc-2.2.0.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.2.0.tar.gz
-Summary  : Hierarchical pool based memory allocator with destructors
+Summary  : A hierarchical pool based memory system with destructors
 Group    : Development/Tools
 License  : LGPL-3.0+
 Requires: talloc-lib = %{version}-%{release}
@@ -21,19 +21,14 @@ BuildRequires : zlib-dev
 Patch1: 0001-add-mock-disable-static-option.patch
 
 %description
-This subsystem ensures that we can always use a certain core set of
-functions and types, that are either provided by the OS or by replacement
-functions / definitions in this subsystem. The aim is to try to stick
-to POSIX functions in here as much as possible. Convenience functions
-that are available on no platform at all belong in other subsystems
-(such as LIBUTIL).
+See http://code.google.com/p/waf/ for more information on waf
+You can get a svn copy of the upstream source with:
 
 %package dev
 Summary: dev components for the talloc package.
 Group: Development
 Requires: talloc-lib = %{version}-%{release}
 Provides: talloc-devel = %{version}-%{release}
-Requires: talloc = %{version}-%{release}
 
 %description dev
 dev components for the talloc package.
@@ -82,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1553362953
+export SOURCE_DATE_EPOCH=1553638164
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -92,7 +87,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1553362953
+export SOURCE_DATE_EPOCH=1553638164
 rm -rf %{buildroot}
 %make_install
 
@@ -110,11 +105,12 @@ rm -rf %{buildroot}
 %files extras
 %defattr(-,root,root,-)
 /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2
+/usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2.2.0
 
 %files lib
 %defattr(-,root,root,-)
 %exclude /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2
-/usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2.2.0
+%exclude /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2.2.0
 /usr/lib64/libtalloc.so.2
 /usr/lib64/libtalloc.so.2.2.0
 
