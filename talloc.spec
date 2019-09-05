@@ -4,7 +4,7 @@
 #
 Name     : talloc
 Version  : 2.2.0
-Release  : 30
+Release  : 31
 URL      : https://www.samba.org/ftp/talloc/talloc-2.2.0.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.2.0.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
@@ -29,6 +29,7 @@ Summary: dev components for the talloc package.
 Group: Development
 Requires: talloc-lib = %{version}-%{release}
 Provides: talloc-devel = %{version}-%{release}
+Requires: talloc = %{version}-%{release}
 
 %description dev
 dev components for the talloc package.
@@ -76,18 +77,18 @@ python3 components for the talloc package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1553638164
-export LDFLAGS="${LDFLAGS} -fno-lto"
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1567710038
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static --disable-rpath --disable-rpath-install
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1553638164
+export SOURCE_DATE_EPOCH=1567710038
 rm -rf %{buildroot}
 %make_install
 
@@ -96,21 +97,20 @@ rm -rf %{buildroot}
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
-/usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so
+/usr/include/talloc.h
 /usr/lib64/libtalloc.so
-/usr/lib64/pkgconfig/pytalloc-util.cpython-37m-x86_64-linux-gnu.pc
 /usr/lib64/pkgconfig/talloc.pc
 
 %files extras
 %defattr(-,root,root,-)
+/usr/include/pytalloc.h
+/usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so
 /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2
 /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2.2.0
+/usr/lib64/pkgconfig/pytalloc-util.cpython-37m-x86_64-linux-gnu.pc
 
 %files lib
 %defattr(-,root,root,-)
-%exclude /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2
-%exclude /usr/lib64/libpytalloc-util.cpython-37m-x86-64-linux-gnu.so.2.2.0
 /usr/lib64/libtalloc.so.2
 /usr/lib64/libtalloc.so.2.2.0
 
