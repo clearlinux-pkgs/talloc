@@ -4,7 +4,7 @@
 #
 Name     : talloc
 Version  : 2.3.1
-Release  : 41
+Release  : 42
 URL      : https://www.samba.org/ftp/talloc/talloc-2.3.1.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.3.1.tar.gz
 Summary  : Hierarchical pool based memory allocator with destructors
