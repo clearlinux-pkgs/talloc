@@ -4,10 +4,10 @@
 #
 Name     : talloc
 Version  : 2.3.1
-Release  : 43
+Release  : 44
 URL      : https://www.samba.org/ftp/talloc/talloc-2.3.1.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.3.1.tar.gz
-Summary  : Hierarchical pool based memory allocator with destructors
+Summary  : A hierarchical pool based memory system with destructors
 Group    : Development/Tools
 License  : LGPL-3.0+
 Requires: talloc-lib = %{version}-%{release}
@@ -21,19 +21,14 @@ BuildRequires : zlib-dev
 Patch1: 0001-add-mock-disable-static-option.patch
 
 %description
-This subsystem ensures that we can always use a certain core set of
-functions and types, that are either provided by the OS or by replacement
-functions / definitions in this subsystem. The aim is to try to stick
-to POSIX functions in here as much as possible. Convenience functions
-that are available on no platform at all belong in other subsystems
-(such as LIBUTIL).
+See http://code.google.com/p/waf/ for more information on waf
+You can get a svn copy of the upstream source with:
 
 %package dev
 Summary: dev components for the talloc package.
 Group: Development
 Requires: talloc-lib = %{version}-%{release}
 Provides: talloc-devel = %{version}-%{release}
-Requires: talloc = %{version}-%{release}
 Requires: talloc = %{version}-%{release}
 
 %description dev
@@ -84,18 +79,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582913656
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1607993023
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static --disable-rpath --disable-rpath-install
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1582913656
+export SOURCE_DATE_EPOCH=1607993023
 rm -rf %{buildroot}
 %make_install
 
@@ -111,10 +105,10 @@ rm -rf %{buildroot}
 %files extras
 %defattr(-,root,root,-)
 /usr/include/pytalloc.h
-/usr/lib64/libpytalloc-util.cpython-38-x86-64-linux-gnu.so
-/usr/lib64/libpytalloc-util.cpython-38-x86-64-linux-gnu.so.2
-/usr/lib64/libpytalloc-util.cpython-38-x86-64-linux-gnu.so.2.3.1
-/usr/lib64/pkgconfig/pytalloc-util.cpython-38-x86_64-linux-gnu.pc
+/usr/lib64/libpytalloc-util.cpython-39-x86-64-linux-gnu.so
+/usr/lib64/libpytalloc-util.cpython-39-x86-64-linux-gnu.so.2
+/usr/lib64/libpytalloc-util.cpython-39-x86-64-linux-gnu.so.2.3.1
+/usr/lib64/pkgconfig/pytalloc-util.cpython-39-x86_64-linux-gnu.pc
 
 %files lib
 %defattr(-,root,root,-)
