@@ -1,5 +1,4 @@
 libc.so.6
 libcrypt.so.1
 libm.so.6
-libpytalloc-util.cpython-39-x86-64-linux-gnu.so.2
-libpython3.9.so.1.0
+libpython3.10.so.1.0

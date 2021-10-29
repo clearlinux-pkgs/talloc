@@ -4,7 +4,7 @@
 #
 Name     : talloc
 Version  : 2.3.3
-Release  : 54
+Release  : 55
 URL      : https://www.samba.org/ftp/talloc/talloc-2.3.3.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.3.3.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
@@ -79,7 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629845916
+export SOURCE_DATE_EPOCH=1635528962
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -90,7 +90,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1629845916
+export SOURCE_DATE_EPOCH=1635528962
 rm -rf %{buildroot}
 %make_install
 
@@ -100,19 +100,19 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/include/talloc.h
+/usr/lib64/libpytalloc-util.cpython-310-x86-64-linux-gnu.so
 /usr/lib64/libtalloc.so
+/usr/lib64/pkgconfig/pytalloc-util.cpython-310-x86_64-linux-gnu.pc
 /usr/lib64/pkgconfig/talloc.pc
 
 %files extras
 %defattr(-,root,root,-)
 /usr/include/pytalloc.h
-/usr/lib64/libpytalloc-util.cpython-39-x86-64-linux-gnu.so
-/usr/lib64/libpytalloc-util.cpython-39-x86-64-linux-gnu.so.2
-/usr/lib64/libpytalloc-util.cpython-39-x86-64-linux-gnu.so.2.3.3
-/usr/lib64/pkgconfig/pytalloc-util.cpython-39-x86_64-linux-gnu.pc
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/libpytalloc-util.cpython-310-x86-64-linux-gnu.so.2
+/usr/lib64/libpytalloc-util.cpython-310-x86-64-linux-gnu.so.2.3.3
 /usr/lib64/libtalloc.so.2
 /usr/lib64/libtalloc.so.2.3.3
 
