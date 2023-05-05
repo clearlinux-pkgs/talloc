@@ -5,7 +5,7 @@
 #
 Name     : talloc
 Version  : 2.4.0
-Release  : 65
+Release  : 67
 URL      : https://www.samba.org/ftp/talloc/talloc-2.4.0.tar.gz
 Source0  : https://www.samba.org/ftp/talloc/talloc-2.4.0.tar.gz
 Summary  : A hierarchical pool based memory system with destructors
@@ -84,18 +84,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680123653
+export SOURCE_DATE_EPOCH=1683252960
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %configure --disable-static --disable-rpath \
 --disable-rpath-install
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1680123653
+export SOURCE_DATE_EPOCH=1683252960
 rm -rf %{buildroot}
 %make_install
 
@@ -111,13 +111,11 @@ rm -rf %{buildroot}
 %files extras
 %defattr(-,root,root,-)
 /usr/include/pytalloc.h
-/usr/lib64/libpytalloc-util.cpython-311-x86-64-linux-gnu.so
-/usr/lib64/libpytalloc-util.cpython-311-x86-64-linux-gnu.so.2
+/usr/lib64/libpytalloc-util.cpython-311-x86-64-linux-gnu.so*
 /usr/lib64/pkgconfig/pytalloc-util.cpython-311-x86_64-linux-gnu.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libpytalloc-util.cpython-311-x86-64-linux-gnu.so.2.4.0
 /usr/lib64/libtalloc.so.2
 /usr/lib64/libtalloc.so.2.4.0
 
