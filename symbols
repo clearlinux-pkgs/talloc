@@ -1,4 +1,4 @@
-libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL.CPYTHON_313_X86_64_LINUX_GNU_2.4.2
+libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL.CPYTHON_313_X86_64_LINUX_GNU_2.4.3
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL_2.0.6
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL_2.0.7
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL_2.0.8
@@ -29,6 +29,7 @@ libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL_2.3.5
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL_2.4.0
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL_2.4.1
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL_2.4.2
+libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:PYTALLOC_UTIL_2.4.3
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:_pytalloc_check_type
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:_pytalloc_get_mem_ctx
 libpytalloc-util.cpython-313-x86-64-linux-gnu.so.2:_pytalloc_get_name
@@ -79,6 +80,7 @@ libtalloc.so.2:TALLOC_2.3.5
 libtalloc.so.2:TALLOC_2.4.0
 libtalloc.so.2:TALLOC_2.4.1
 libtalloc.so.2:TALLOC_2.4.2
+libtalloc.so.2:TALLOC_2.4.3
 libtalloc.so.2:_talloc
 libtalloc.so.2:_talloc_array
 libtalloc.so.2:_talloc_free
